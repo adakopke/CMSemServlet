@@ -10,10 +10,12 @@ import lombok.Setter;
 @NoArgsConstructor
 @AllArgsConstructor
 public class Exame {
-    private String codigo;
+    private int codigo;
     private String nome;
     private String unidade;
-    private String valorRefMin;
-    private String valorRefMax;
+    private Double valorRefMin;
+    private Double valorRefMax;
+    private SexoEnum restringeSexoAplicacao;
+
 
 }

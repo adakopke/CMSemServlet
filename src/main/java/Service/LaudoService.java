@@ -5,7 +5,7 @@ import Domain.Laudo;
 public interface LaudoService {
     void create(Laudo laudo);
 
-    void resultado(String cpf, String codexame);
+    void resultado(String cpf, int codexame);
 
 
 

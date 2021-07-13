@@ -4,6 +4,8 @@ import DAO.ClienteDao;
 import Domain.Cliente;
 
 import javax.inject.Inject;
+import java.io.IOException;
+import java.util.List;
 
 public class ClienteServiceImpl implements ClienteService {
 
@@ -16,9 +18,9 @@ public class ClienteServiceImpl implements ClienteService {
         clienteDao.gravar(cliente);
     }
 
-    @Override
-    public void listar() {
-        clienteDao.listar();
+
+    public List<Cliente> listarTodos() throws IOException {
+        return clienteDao.getAll();
     }
 
     @Override

@@ -36,7 +36,7 @@ public class AplicacaoView {
 
     }
 
-    private void definirOpcao(Scanner sc, int opcao) {
+    private void definirOpcao(Scanner sc, int opcao) throws IOException {
 
     switch (opcao) {
 

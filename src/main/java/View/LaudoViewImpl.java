@@ -1,5 +1,6 @@
 package View;
 
+import Domain.Cliente;
 import Domain.Exame;
 import Domain.Laudo;
 import Service.ClienteService;
@@ -7,6 +8,11 @@ import Service.ExameService;
 import Service.LaudoService;
 
 import javax.inject.Inject;
+import java.io.IOException;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class LaudoViewImpl implements LaudoView {
@@ -23,21 +29,26 @@ public class LaudoViewImpl implements LaudoView {
 
 
     @Override
-    public void create(Scanner sc) {
+    public void create(Scanner sc) throws IOException {
         Laudo laudo = new Laudo();
-
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         System.out.println("Para qual cliente deseja cadastrar um laudo?");
-        clienteService.listar();
+        for (Cliente cliente: clienteService.listarTodos() ) {
+            System.out.println(cliente.toString());
+        }
+        System.out.println("\n");
         System.out.println("\nDigite o CPF do cliente desejado:");
-        laudo.setCpf(sc.next());
+        laudo.setCliente(clienteService.buscar(sc.next()));
+
         exameService.listar();
         System.out.println("Para qual exame deseja registrar o laudo?");
         System.out.println("Informe o código do exame");
-        laudo.setCodigoExame(sc.next());
+
+        laudo.setExame(exameService.buscar(sc.nextInt()));
         System.out.println("Informe o resultado do exame");
         laudo.setResultado(sc.next());
         System.out.println("Informe a data de realização do exame");
-        laudo.setData(sc.next());
+        laudo.setData(LocalDate.parse(sc.next(), formatter));
         laudoService.create(laudo);
         System.out.println("Laudo cadastrado com sucesso");
     }
@@ -53,9 +64,9 @@ public class LaudoViewImpl implements LaudoView {
 
             exameService.listar();
             System.out.println("Informe o código do exame que deseja consultar");
-            String codexame = sc.next();
+            int codexame = sc.nextInt();
 
-            if (codexame.equalsIgnoreCase(exameService.buscar(codexame).getCodigo())) {
+            if (codexame == (exameService.buscar(codexame).getCodigo())) {
 
                 System.out.println("Registros do exame: " + exameService.buscar(codexame).getNome());
                 System.out.println("Dados de referência do exame:\n" +

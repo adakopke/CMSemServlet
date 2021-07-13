@@ -1,9 +1,3 @@
-1,hemácias,milhoes/mm3,4.5,6
-2,hemoglobina,g/dl,13,18
-3,hematocrito,percentual,38,52
-4,vcm,fl,80,100
-5,hcm,pg,26,34
-6,rdw,g/dl,11.5,14.5
-7,plaquetas ,mil/mm3,140,450
-8,pdw,fl,12,16.5
-9,pct,percentual,0.158,0.425
+1;Hemacias;milhoes por mm3;1.5;6.0;null
+2;hemoglobina;g/dl;13.0;18.0;MASCULINO
+3;hematocrito;percentual;38.0;52.0;FEMININO

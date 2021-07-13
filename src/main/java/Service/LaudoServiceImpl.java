@@ -19,7 +19,7 @@ public class LaudoServiceImpl implements LaudoService {
     }
 
     @Override
-    public void resultado(String cpf, String codexame) {
+    public void resultado(String cpf, int codexame) {
          laudoDao.resultado(cpf, codexame);
     }
 }

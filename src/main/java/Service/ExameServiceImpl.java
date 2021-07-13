@@ -22,7 +22,7 @@ public class ExameServiceImpl implements ExameService {
     }
 
     @Override
-    public Exame buscar(String codexame) {
+    public Exame buscar(int codexame) {
         return exameDao.buscar(codexame);
     }
 }

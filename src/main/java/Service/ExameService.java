@@ -9,6 +9,6 @@ public interface ExameService {
 
     void listar();
 
-    Exame buscar(String codexame);
+    Exame buscar(int codexame);
 
 }

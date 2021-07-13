@@ -5,6 +5,9 @@ import Domain.SexoEnum;
 import Service.ClienteService;
 
 import javax.inject.Inject;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeFormatterBuilder;
 import java.util.Scanner;
 
 public class ClienteViewImpl implements ClienteView {
@@ -16,6 +19,7 @@ public class ClienteViewImpl implements ClienteView {
     @Override
     public Cliente create(Scanner sc) {
         Cliente cliente = new Cliente();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("d/MM/yyyy");
         System.out.println("Informe o nome do cliente");
         sc.nextLine();
         cliente.setNome(sc.nextLine());
@@ -34,6 +38,8 @@ public class ClienteViewImpl implements ClienteView {
                 System.out.println("Digite uma opção válida");;
             }
         } while ((sexo == 0));
+        System.out.printf("Informa a data de nascimento no padrão dd/mm/aaaa\n");
+        cliente.setDataNascimento(LocalDate.parse(sc.next(), formatter));
 
         clienteService.create(cliente);
         System.out.println("Cliente cadastrado com sucesso");
